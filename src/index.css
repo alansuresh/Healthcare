@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --bg-app: theme('colors.ink.50');
+  }
+
+  html.dark {
+    color-scheme: dark;
+    --bg-app: theme('colors.ink.950');
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-ink-50 text-ink-900 antialiased;
+    font-feature-settings: 'cv11', 'ss01', 'ss03';
+  }
+
+  html.dark body {
+    @apply bg-ink-950 text-ink-100;
+  }
+
+  *::selection {
+    background: theme('colors.brand.200');
+    color: theme('colors.brand.900');
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(99, 117, 149, 0.3);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(99, 117, 149, 0.55);
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@layer components {
+  .surface {
+    @apply rounded-2xl border border-ink-200/60 bg-white shadow-soft transition-colors;
+  }
+  html.dark .surface {
+    @apply border-ink-800 bg-ink-900;
+  }
+
+  .surface-elevated {
+    @apply rounded-2xl border border-ink-200/60 bg-white shadow-card;
+  }
+  html.dark .surface-elevated {
+    @apply border-ink-800 bg-ink-900;
+  }
+
+  .input-base {
+    @apply block w-full rounded-xl border border-ink-200 bg-white px-3.5 py-2.5 text-sm text-ink-900 placeholder:text-ink-400 transition focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-500/15;
+  }
+  html.dark .input-base {
+    @apply border-ink-700 bg-ink-900 text-ink-100 placeholder:text-ink-500 focus:border-brand-400;
+  }
+
+  .nav-link {
+    @apply flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-ink-600 transition hover:bg-ink-100 hover:text-ink-900;
+  }
+  html.dark .nav-link {
+    @apply text-ink-300 hover:bg-ink-800 hover:text-white;
+  }
+
+  .nav-link-active {
+    @apply bg-brand-50 text-brand-700 hover:bg-brand-50 hover:text-brand-800;
+  }
+  html.dark .nav-link-active {
+    @apply bg-brand-500/10 text-brand-300 hover:bg-brand-500/15 hover:text-brand-200;
+  }
+
+  .skeleton {
+    @apply relative overflow-hidden rounded-md bg-ink-100;
+    background-image: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(255, 255, 255, 0.65) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.6s linear infinite;
+  }
+  html.dark .skeleton {
+    @apply bg-ink-800;
+    background-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.06) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  /* Recharts dark-mode tweaks */
+  html.dark .recharts-cartesian-grid line {
+    stroke: rgba(255, 255, 255, 0.08);
+  }
+  html.dark .recharts-text {
+    fill: rgba(255, 255, 255, 0.65);
+  }
+}
+
+@layer utilities {
+  .scroll-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+}

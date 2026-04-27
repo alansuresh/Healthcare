@@ -1,0 +1,19 @@
+{
+  "name": "MediSync · Healthcare Operations Portal",
+  "short_name": "MediSync",
+  "description": "Enterprise B2B healthcare operations portal.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f6f8fb",
+  "theme_color": "#1d75f5",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
